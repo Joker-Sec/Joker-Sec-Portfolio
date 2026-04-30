@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Joker Sec</title>
+  <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/twister-fusion" rel="stylesheet">
+  
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --red:  #a23b00;
+      --red2: #ff0000d2;
+      --white: #ffffff;
+    }
+    :root {
+      --red:  #a23b00;
+      --red2: #ff0000d2;
+      --white: #ffffff;
+    }
+
+    #particles-js {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-image: url("joker.jpg");
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+      z-index: 1;
+    }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      position: fixed;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      background: rgba(0,0,0,0.75);
+      border-left: 2px solid var(--red);
+      border-radius: 12px 0 0 12px;
+      backdrop-filter: blur(8px);
+      overflow: hidden;
+    }
+
+    .sidebar a {
+      display: flex;
+      align-items: center;
+      flex-direction: row-reverse;
+      gap: 20px;
+      padding: 15px 20px;
+      color: var(--white);
+      text-decoration: none;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+
+    .sidebar a svg {
+      width: 40px;
+      height: 40px;
+      flex-shrink: 0;
+      fill: var(--white);
+    }
+
+    .sidebar a .label {
+      font-size: 18px;
+      font-weight: bold; 
+      letter-spacing: 1px;
+      color: var(--white);
+      opacity: 0;
+      max-width: 0;
+      overflow: hidden;
+      transition: opacity 0.25s, max-width 0.3s;
+
+    }
+
+    .sidebar:hover a .label {
+      opacity: 1;
+      max-width: 130px;
+    }
+
+    .sidebar a:hover {
+      background: var(--red);
+    }
+
+    .main {
+  position: fixed;
+  right: 400px !important;
+  bottom: 200px;
+  left: auto !important;  
+  z-index: 100;
+  text-align: center;
+  animation: fadeUp 1s ease both;
+}
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .main .alias {
+      font-family: 'Metal Mania', cursive;
+      font-size: clamp(5rem, 12vw, 10rem);
+      color: var(--white);
+      text-shadow: 0 0 30px var(--red2), 2px 2px 0 #000;
+      line-height: 1;
+      letter-spacing: 4px;
+    }
+
+    .main .name {
+      font-family: 'Twister Fusion', sans-serif !important; 
+      font-size: clamp(2rem, 4vw, 3rem) !important; 
+      color: var(--red2);
+      letter-spacing: 2px;
+      text-transform: none; 
+      margin-top: 15px;
+      text-shadow: 2px 2px 8px #000; 
+      display: block;
+      animation: glitchText 3s infinite; 
+    }
+
+    @keyframes glitchText {
+      0% { opacity: 1; }
+      50% { opacity: 0.8; transform: skewX(1deg); }
+      100% { opacity: 1; }
+    }
+
+    .pulse {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--red2);
+      z-index: 200;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.951); }
+      50%       { box-shadow: 0 0 0 10px rgba(235, 61, 42, 0); }
+    }
+  </style>
+</head>
+<body>
+
+<div id="particles-js"></div>
+
+<nav class="sidebar">
+
+  <!-- YouTube -->
+  <a href="https://www.youtube.com/@joker_sec" target="_blank">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+    <span class="label">YouTube</span>
+  </a>
+
+  <!-- TryHackMe -->
+  <a href="https://tryhackme.com/p/JokerSec" target="_blank">
+    <svg viewBox="0 0 24 24" width="28" height="28" fill="white" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10.705 0C7.54 0 4.902 2.285 4.349 5.291a4.525 4.525 0 0 0-4.107 4.5 4.525 4.525 0 0 0 4.52 4.52h6.761a.625.625 0 1 0 0-1.25H4.761a3.273 3.273 0 0 1-3.27-3.27A3.273 3.273 0 0 1 6.59 7.08a.625.625 0 0 0 .7-1.035 4.488 4.488 0 0 0-1.68-.69 5.223 5.223 0 0 1 5.096-4.104 5.221 5.221 0 0 1 5.174 4.57 4.489 4.489 0 0 0-.488.305.625.625 0 1 0 .731 1.013 3.245 3.245 0 0 1 1.912-.616 3.278 3.278 0 0 1 3.203 2.61.625.625 0 0 0 1.225-.251 4.533 4.533 0 0 0-4.428-3.61 4.54 4.54 0 0 0-.958.105C16.556 2.328 13.9 0 10.705 0zm5.192 10.64a.925.925 0 0 0-.925.925v1.388a.925.925 0 0 0 1.85 0v-1.388a.925.925 0 0 0-.925-.925zm3.182.738a.925.925 0 0 0-.64 1.588l.981.982a.925.925 0 1 0 1.309-1.308l-.982-.982a.922.922 0 0 0-.668-.28zm-6.356.008a.921.921 0 0 0-.652.272l-.982.982a.925.925 0 1 0 1.308 1.308l.982-.982a.925.925 0 0 0-.656-1.58zm3.174 2.696a2.157 2.157 0 1 0 0 4.314 2.157 2.157 0 0 0 0-4.314zm0 1.157a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+    </svg>
+    <span class="label">TryHackMe</span>
+  </a>
+
+  <!-- HackTheBox -->
+   <a href="https://profile.hackthebox.com/profile/019dcfa3-d911-729a-984c-54a2475a1202" target="_blank">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+       <path d="M11.997 0L3.104 5.127v10.27L11.997 24l8.897-5.127V8.56l-2.028 1.17v7.915l-6.869 3.96-6.866-3.96V6.297l6.866-3.96 6.869 3.96v1.442l2.028-1.171V5.127L11.997 0zM8.577 8.272v7.455l3.417 1.972 3.424-1.972V8.272l-3.424-1.977-3.417 1.977zm5.348 6.335l-1.931 1.112-1.928-1.112V10.21l1.928-1.112 1.931 1.112v4.397z"/>
+    </svg>
+    <span class="label">HackTheBox</span>
+  </a>
+
+  <!-- GitHub -->
+  <a href="https://github.com/Joker-Sec" target="_blank">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+    <span class="label">GitHub</span>
+  </a>
+
+  <!-- Telegram -->
+  <a href="https://t.me/joker_sec" target="_blank">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+    <span class="label">Telegram</span>
+  </a>
+
+  <!-- Discord -->
+  <a href="https://discord.com/users/joker_sec" target="_blank">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+    <span class="label">Discord</span>
+  </a>
+
+  <!-- LinkedIn -->
+  <a href="https://www.linkedin.com/in/joker-sec-056b10373/" target="_blank">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    <span class="label">LinkedIn</span>
+  </a>
+
+  <!-- Twitter/X -->
+  <a href="https://x.com/JokerSec85360" target="_blank">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+    <span class="label">Twitter / X</span>
+  </a>
+
+</nav>
+
+<div class="main">
+  <div class="alias">Joker Sec</div>
+  <div class="name">Junior Penetration Tester</div>
+</div>
+
+<div class="pulse"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script>
+  particlesJS('particles-js', {
+    "particles": {
+      "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+      "color": { "value": "#000000" },
+      "shape": {
+        "type": "image",
+        "stroke": { "width": 9, "color": "#8b0000" },
+        "image": { "src": "joker_face.png", "width": 100, "height": 100 }
+      },
+      "opacity": { "value": 0.5, "random": false, "anim": { "enable": true, "speed": 1.7, "opacity_min": 0, "sync": false } },
+      "size": { "value": 15, "random": false, "anim": { "enable": false, "speed": 40, "size_min": 0.1, "sync": false } },
+      "line_linked": { "enable": true, "distance": 304, "color": "#FFFFFF", "opacity": 0.8, "width": 1.1 },
+      "move": { "enable": true, "speed": 6, "direction": "none", "random": true, "straight": false, "out_mode": "out", "bounce": false }
+    },
+    "interactivity": {
+      "detect_on": "canvas",
+      "events": {
+        "onhover": { "enable": true, "mode": "repulse" },
+        "onclick": { "enable": true, "mode": "push" },
+        "resize": true
+      },
+      "modes": {
+        "repulse": { "distance": 200, "duration": 0.4 },
+        "push": { "particles_nb": 4 }
+      }
+    },
+    "retina_detect": true
+  });
+</script>
+</body>
+</html>
